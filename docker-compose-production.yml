@@ -1,0 +1,31 @@
+version: '2'
+services:
+
+  web:
+    image: node:7.10
+    restart: on-failure:10
+    build: .
+    volumes:
+      - /usr/src/app
+    working_dir: /usr/src/app
+    command: ./docker-web-entrypoint.sh
+    ports:
+      - "4000:4000"
+    depends_on:
+      - mongo
+    networks:
+      - all
+    environment:
+      NODE_ENV: production
+      REFILL_DB: refill
+      MONGODB_URI: "mongodb://mongo:27017/doubletapp"
+
+  mongo:
+    image: mongo:3
+    restart: on-failure:10
+    command: mongod --smallfiles
+    networks:
+      - all
+
+networks:
+  all:
