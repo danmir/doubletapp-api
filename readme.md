@@ -1,11 +1,14 @@
-###### Локальная разработка
+#### Локальная разработка
+
 Переменные окружения:
+
 | Переменные | Значения |
 | ------ | ------ |
 | `NODE_ENV` | [test \| development \| production] |
 | `MONGODB_URI` | ConnectionString для mongo. Если не указана - выбирается исходя из `NODE_ENV ` в `/server/db/config` |
 | `REFILL_DB` | Значение `refill` - перезапишет бд тестовыми данными из `/server/populationScript.js` |
 | `PORT` | Порт для запуска. По умолчанию `4000` |
+
 С использованием Docker compose (node + mongo):
 ```sh
 $ docker-compose -f docker-compose-dev.yml up
@@ -20,7 +23,7 @@ $ REFILL_DB=refill npm run watch
 $ npm run test
 ```
 
-###### Deploy
+#### Deploy
 С использованием Docker compose
 ```sh
 $ docker-compose build
